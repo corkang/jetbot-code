@@ -32,15 +32,15 @@ class ServoSerial:
         addr = 0x2A
         #将舵机转动脉冲保持在安全范围内
         if index == 1:
-            if angle<600:
-                angle=600
-            elif angle>3600:
-                angle = 3600
+            if angle<0:
+                angle=0
+            elif angle>2000:
+                angle = 2000
         elif index == 2:
-            if angle<1300:
-                angle=1300
-            elif angle>4095:
-                angle=4095
+            if angle<900:
+                angle=900
+            elif angle>3000:
+                angle=3000
 
         pos_H = (angle >> 8) & 0x00ff
         pos_L = angle & 0x00ff
@@ -64,15 +64,30 @@ class ServoSerial:
         addr1 = 0x2A
         addr2 = 0x04
         #将舵机转动脉冲保持在安全范围内
-        if angle_1<600:
-            angle_1=600
-        elif angle_1>3600:
-            angle_1 = 3600
+        # Servo A / motor 1: 0 ~ 2000
+        # Servo B / motor 2: 900 ~ 3000
 
-        if angle_2<1300:
-            angle_2=1300
-        elif angle_2>4095:
-            angle_2=4095
+        if index_1 == 1:
+            if angle_1 < 0:
+                angle_1 = 0
+            elif angle_1 > 2000:
+                angle_1 = 2000
+        elif index_1 == 2:
+            if angle_1 < 900:
+                angle_1 = 900
+            elif angle_1 > 3000:
+                angle_1 = 3000
+
+        if index_2 == 1:
+            if angle_2 < 0:
+                angle_2 = 0
+            elif angle_2 > 2000:
+                angle_2 = 2000
+        elif index_2 == 2:
+            if angle_2 < 900:
+                angle_2 = 900
+            elif angle_2 > 3000:
+                angle_2 = 3000
 
         pos1_H = (angle_1 >> 8) & 0x00ff
         pos1_L = angle_1 & 0x00ff
