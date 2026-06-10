@@ -128,11 +128,15 @@ python3 -u patrol_driving.py \
   --turn-speed 0.25 \
   --confidence-threshold 0.60 \
   --detection-interval 1.0 \
+  --detection-image-size 160 \
+  --detection-result-ttl 8.0 \
   --detection-save-cooldown 8.0 \
   --device cpu
 ```
 
-Detection runs only when the safety CNN action is `forward`, and only at the configured low-rate interval. The robot stops briefly while the segmentation CNN runs so it does not keep driving during a slower detection inference.
+Detection runs only when the safety CNN action is `forward`, and only at the configured low-rate interval. The segmentation CNN runs in a background worker so slow detection inference does not block the safety driving loop. While there is no fresh detection result yet, the robot uses `forward_slow` instead of full-speed `forward`. The robot stops only when a close-enough object is being reported.
+
+If detection is slow on JetBot, first try `--detection-image-size 160`. If it is still slow, try `--detection-image-size 128`. This is possible because the segmentation CNN is fully convolutional, but smaller inputs may reduce mask quality.
 
 Object behavior:
 
