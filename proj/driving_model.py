@@ -13,6 +13,13 @@ DEFAULT_PREPROCESSING = "raw_rgb_normalized"
 LAB_TABLE_PREPROCESSING = "lab_table_mask"
 
 
+class Flatten(nn.Module):
+    """Compatibility replacement for torch.nn.Flatten on old JetBot PyTorch."""
+
+    def forward(self, x):
+        return x.view(x.size(0), -1)
+
+
 class TinyDrivingCNN(nn.Module):
     """Small from-scratch CNN for JetBot safety/driving labels."""
 
@@ -37,7 +44,7 @@ class TinyDrivingCNN(nn.Module):
             nn.AdaptiveAvgPool2d((1, 1)),
         )
         self.classifier = nn.Sequential(
-            nn.Flatten(),
+            Flatten(),
             nn.Dropout(p=0.1),
             nn.Linear(96, num_classes),
         )
@@ -93,7 +100,7 @@ class ProfessorSafetyCNN(nn.Module):
             ch_in = num_ch_out
 
         last_feature_pixels = feature_map_height * feature_map_width * conv_hidden_channels[-1]
-        layers.append(nn.Flatten())
+        layers.append(Flatten())
         layers.append(make_fc_block(last_feature_pixels, fc_hidden_nodes, is_last_block=False))
         layers.append(make_fc_block(fc_hidden_nodes, num_classes, is_last_block=True))
         self.network = nn.Sequential(*layers)
