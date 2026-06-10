@@ -29,19 +29,19 @@ From JetBot:
 
 ```bash
 cd ~/Notebook/English/expr/proj
-python3 patrol_driving.py --model ../models/safety_cnn.pt
+python3 -u patrol_driving.py --model ../models/safety_cnn.pt --device cpu
 ```
 
 Conservative first run:
 
 ```bash
-python3 patrol_driving.py --model ../models/safety_cnn.pt --speed 0.25 --turn-speed 0.25
+python3 -u patrol_driving.py --model ../models/safety_cnn.pt --speed 0.25 --turn-speed 0.25 --device cpu
 ```
 
 Load model only:
 
 ```bash
-python3 patrol_driving.py --model ../models/safety_cnn.pt --dry-run
+python3 -u patrol_driving.py --model ../models/safety_cnn.pt --dry-run --device cpu
 ```
 
 ## Model Format
@@ -84,21 +84,69 @@ On JetBot:
 cd ~/Notebook/English/expr
 git pull
 cd proj
-python3 patrol_driving.py --model ../models/safety_cnn.pt --dry-run
+python3 -u patrol_driving.py --model ../models/safety_cnn.pt --dry-run --device cpu
 ```
 
 If dry-run loads successfully:
 
 ```bash
-python3 patrol_driving.py --model ../models/safety_cnn.pt --speed 0.25 --turn-speed 0.25 --confidence-threshold 0.60
+python3 -u patrol_driving.py --model ../models/safety_cnn.pt --speed 0.25 --turn-speed 0.25 --confidence-threshold 0.60 --device cpu
 ```
 
 After a cautious first test, increase speed only if behavior is stable:
 
 ```bash
-python3 patrol_driving.py --model ../models/safety_cnn.pt --speed 0.4 --turn-speed 0.4 --confidence-threshold 0.60
+python3 -u patrol_driving.py --model ../models/safety_cnn.pt --speed 0.4 --turn-speed 0.4 --confidence-threshold 0.60 --device cpu
 ```
 
 ## Next Extension Point
 
 Object detection/reporting should be added as a separate module that reads the same camera frame after the driving loop is stable. Keep CNN1 driving safety authoritative over report behavior.
+
+## Run With Object Detection
+
+Place the converted detection checkpoint at:
+
+```text
+jetbot-code/models/detection_seg.pt
+```
+
+On JetBot, first load both models without opening camera or motors:
+
+```bash
+cd ~/Notebook/English/expr/proj
+python3 -u patrol_driving.py --model ../models/safety_cnn.pt --detection-model ../models/detection_seg.pt --dry-run --device cpu
+```
+
+Then run cautiously:
+
+```bash
+python3 -u patrol_driving.py \
+  --model ../models/safety_cnn.pt \
+  --detection-model ../models/detection_seg.pt \
+  --speed 0.25 \
+  --turn-speed 0.25 \
+  --confidence-threshold 0.60 \
+  --detection-interval 1.0 \
+  --detection-save-cooldown 8.0 \
+  --device cpu
+```
+
+Detection runs only when the safety CNN action is `forward`, and only at the configured low-rate interval. The robot stops briefly while the segmentation CNN runs so it does not keep driving during a slower detection inference.
+
+Object behavior:
+
+- `No object`: normal safety CNN patrol.
+- `Object detected (far)`: enter slow approach mode. The robot turns left/right briefly if the object is off-center, otherwise it moves forward slowly.
+- `Object detected (close enough)`: stop, save report image and metadata, then suppress duplicate reports.
+- After reporting once, reporting is re-armed only after the object disappears from the camera for several detection checks.
+
+Detected reports are saved under:
+
+```text
+proj/img/detected/
+```
+
+Photos are saved only after the segmentation mask reaches the close-enough threshold. Each report includes both `.jpg` and `.json` files so the local reporter can later be replaced with a Raspberry Pi sender.
+
+Do not copy `Building CNN/CNN_detection/data/generated/` to JetBot. Only copy the final checkpoint.
