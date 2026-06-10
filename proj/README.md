@@ -99,58 +99,41 @@ After a cautious first test, increase speed only if behavior is stable:
 python3 -u patrol_driving.py --model ../models/safety_cnn.pt --speed 0.4 --turn-speed 0.4 --confidence-threshold 0.60 --device cpu
 ```
 
-## Next Extension Point
+## Timed Patrol Capture
 
-Object detection/reporting should be added as a separate module that reads the same camera frame after the driving loop is stable. Keep CNN1 driving safety authoritative over report behavior.
+JetBot should run only the Safety CNN. Object detection/classification should run later on the server or Raspberry Pi from saved patrol frames.
 
-## Run With Object Detection
-
-Place the converted detection checkpoint at:
-
-```text
-jetbot-code/models/detection_seg.pt
-```
-
-On JetBot, first load both models without opening camera or motors:
+Run for 60 seconds and save about one frame per second:
 
 ```bash
 cd ~/Notebook/English/expr/proj
-python3 -u patrol_driving.py --model ../models/safety_cnn.pt --detection-model ../models/detection_seg.pt --dry-run --device cpu
-```
-
-Then run cautiously:
-
-```bash
 python3 -u patrol_driving.py \
   --model ../models/safety_cnn.pt \
-  --detection-model ../models/detection_seg.pt \
+  --patrol-time 60 \
+  --capture-interval 1.0 \
   --speed 0.25 \
   --turn-speed 0.25 \
   --confidence-threshold 0.60 \
-  --detection-interval 1.0 \
-  --detection-image-size 160 \
-  --detection-result-ttl 8.0 \
-  --detection-save-cooldown 8.0 \
   --device cpu
 ```
 
-Detection runs only when the safety CNN action is `forward`, and only at the configured low-rate interval. The segmentation CNN runs in a background worker so slow detection inference does not block the safety driving loop. While there is no fresh detection result yet, the robot uses `forward_slow` instead of full-speed `forward`. The robot stops only when a close-enough object is being reported.
-
-If detection is slow on JetBot, first try `--detection-image-size 160`. If it is still slow, try `--detection-image-size 128`. This is possible because the segmentation CNN is fully convolutional, but smaller inputs may reduce mask quality.
-
-Object behavior:
-
-- `No object`: normal safety CNN patrol.
-- `Object detected (far)`: enter slow approach mode. The robot turns left/right briefly if the object is off-center, otherwise it moves forward slowly.
-- `Object detected (close enough)`: stop, save report image and metadata, then suppress duplicate reports.
-- After reporting once, reporting is re-armed only after the object disappears from the camera for several detection checks.
-
-Detected reports are saved under:
+Frames are saved in a timestamped run folder:
 
 ```text
-proj/img/detected/
+proj/img/patrol/YYYYMMDD_HHMMSS/
 ```
 
-Photos are saved only after the segmentation mask reaches the close-enough threshold. Each report includes both `.jpg` and `.json` files so the local reporter can later be replaced with a Raspberry Pi sender.
+Each run folder contains:
 
-Do not copy `Building CNN/CNN_detection/data/generated/` to JetBot. Only copy the final checkpoint.
+- `0001.jpg`, `0002.jpg`, ...
+- `metadata.json` with elapsed time, action, raw Safety CNN label, confidence, and probabilities for each saved frame
+
+Copy a run folder from JetBot to a server:
+
+```bash
+rsync -avh --progress \
+  jetbot@JETBOT_IP:~/Notebook/English/expr/proj/img/patrol/YYYYMMDD_HHMMSS/ \
+  ~/jetbot_patrol/YYYYMMDD_HHMMSS/
+```
+
+This keeps JetBot lightweight: no detection model, no generated training data, and no batch object analysis on the robot.
