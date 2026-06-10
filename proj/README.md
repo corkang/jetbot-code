@@ -67,8 +67,13 @@ On the Mac, after training:
 
 ```bash
 cd "/Users/corkang/Desktop/Course-code/7_SpecialTopics_AIConvergence/cv-project-jetbot"
-mkdir -p jetbot-code/models
-cp "Building CNN/CNN_safety_preprocess/checkpoint/safety_cnn.pt" "jetbot-code/models/safety_cnn.pt"
+/Users/corkang/Desktop/Course-code/7_SpecialTopics_AIConvergence/cv-class/.venv/bin/python "Building CNN/CNN_safety_preprocess/convert_checkpoint_for_jetbot.py"
+```
+
+Do not copy the training checkpoint directly to JetBot. Newer PyTorch saves `.pt` files in zip serialization format, which old JetBot/Python 3.6 PyTorch may fail to read with `tarfile.InvalidHeaderError`. The converter writes a legacy-format deployment checkpoint at:
+
+```text
+jetbot-code/models/safety_cnn.pt
 ```
 
 Then push/pull `jetbot-code` using your normal workflow.
