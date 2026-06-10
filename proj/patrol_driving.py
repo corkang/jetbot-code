@@ -54,15 +54,19 @@ class DrivingPatrol:
         self.device = torch.device("cpu")
 
     def setup(self):
+        print("Patrol setup started.", flush=True)
         self.device = self._select_device(self.config.device)
+        print("Using device={}.".format(self.device), flush=True)
         model_path = ensure_model_path(self.config.model_path)
+        print("Model path OK: {}".format(model_path), flush=True)
+        print("Loading model checkpoint...", flush=True)
         self.model, model_metadata = load_driving_model(model_path, self.device, labels=self.labels)
         self.labels = model_metadata.get("labels", self.labels)
         self.preprocessing = model_metadata.get("preprocessing", self.preprocessing)
-        print("Loaded model with labels={} preprocessing={}.".format(self.labels, self.preprocessing))
+        print("Loaded model with labels={} preprocessing={}.".format(self.labels, self.preprocessing), flush=True)
 
         if self.config.dry_run:
-            print("Dry run enabled. Model loaded; camera and robot are not started.")
+            print("Dry run enabled. Model loaded; camera and robot are not started.", flush=True)
             return
 
         from jetbot import Camera, Robot
@@ -70,7 +74,7 @@ class DrivingPatrol:
         self.robot = Robot()
         self.camera = Camera.instance(width=self.config.camera_width, height=self.config.camera_height)
         time.sleep(1.0)
-        print("Robot and camera initialized at {}x{}.".format(self.config.camera_width, self.config.camera_height))
+        print("Robot and camera initialized at {}x{}.".format(self.config.camera_width, self.config.camera_height), flush=True)
 
     def _select_device(self, requested):
         if requested == "cuda" and torch.cuda.is_available():
