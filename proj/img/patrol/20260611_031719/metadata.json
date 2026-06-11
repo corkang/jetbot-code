@@ -1,0 +1,459 @@
+{
+  "capture_interval": 1.0,
+  "patrol_time": 60.0,
+  "camera_width": 224,
+  "camera_height": 224,
+  "records": [
+    {
+      "file_name": "0001.jpg",
+      "elapsed": 0.00012683868408203125,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.945000946521759,
+      "probabilities": [
+        0.945000946521759,
+        0.054999105632305145
+      ]
+    },
+    {
+      "file_name": "0002.jpg",
+      "elapsed": 1.7372286319732666,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9665984511375427,
+      "probabilities": [
+        0.9665984511375427,
+        0.03340154513716698
+      ]
+    },
+    {
+      "file_name": "0003.jpg",
+      "elapsed": 3.0608956813812256,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.994850218296051,
+      "probabilities": [
+        0.994850218296051,
+        0.0051497514359653
+      ]
+    },
+    {
+      "file_name": "0004.jpg",
+      "elapsed": 4.386922836303711,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.5754057765007019,
+      "probabilities": [
+        0.4245942234992981,
+        0.5754057765007019
+      ]
+    },
+    {
+      "file_name": "0005.jpg",
+      "elapsed": 6.067453384399414,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.9997943043708801,
+      "probabilities": [
+        0.000205711810849607,
+        0.9997943043708801
+      ]
+    },
+    {
+      "file_name": "0006.jpg",
+      "elapsed": 7.755166053771973,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.9973443150520325,
+      "probabilities": [
+        0.002655685180798173,
+        0.9973443150520325
+      ]
+    },
+    {
+      "file_name": "0007.jpg",
+      "elapsed": 9.43954086303711,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.8401033878326416,
+      "probabilities": [
+        0.159896582365036,
+        0.8401033878326416
+      ]
+    },
+    {
+      "file_name": "0008.jpg",
+      "elapsed": 11.150650024414062,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.8072439432144165,
+      "probabilities": [
+        0.8072439432144165,
+        0.1927560269832611
+      ]
+    },
+    {
+      "file_name": "0009.jpg",
+      "elapsed": 12.541591882705688,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.7433791756629944,
+      "probabilities": [
+        0.7433791756629944,
+        0.256620854139328
+      ]
+    },
+    {
+      "file_name": "0010.jpg",
+      "elapsed": 13.865832328796387,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.7357710599899292,
+      "probabilities": [
+        0.7357710599899292,
+        0.2642289400100708
+      ]
+    },
+    {
+      "file_name": "0011.jpg",
+      "elapsed": 15.427679777145386,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9901824593544006,
+      "probabilities": [
+        0.9901824593544006,
+        0.009817592799663544
+      ]
+    },
+    {
+      "file_name": "0012.jpg",
+      "elapsed": 16.80997395515442,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9933817386627197,
+      "probabilities": [
+        0.9933817386627197,
+        0.006618251092731953
+      ]
+    },
+    {
+      "file_name": "0013.jpg",
+      "elapsed": 18.417904138565063,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9973791837692261,
+      "probabilities": [
+        0.9973791837692261,
+        0.0026208662893623114
+      ]
+    },
+    {
+      "file_name": "0014.jpg",
+      "elapsed": 19.776216983795166,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.998267412185669,
+      "probabilities": [
+        0.998267412185669,
+        0.0017325873486697674
+      ]
+    },
+    {
+      "file_name": "0015.jpg",
+      "elapsed": 21.106156587600708,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9924420118331909,
+      "probabilities": [
+        0.9924420118331909,
+        0.0075580100528895855
+      ]
+    },
+    {
+      "file_name": "0016.jpg",
+      "elapsed": 22.43995499610901,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9570855498313904,
+      "probabilities": [
+        0.9570855498313904,
+        0.04291444271802902
+      ]
+    },
+    {
+      "file_name": "0017.jpg",
+      "elapsed": 23.78929090499878,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.5600645542144775,
+      "probabilities": [
+        0.43993544578552246,
+        0.5600645542144775
+      ]
+    },
+    {
+      "file_name": "0018.jpg",
+      "elapsed": 25.506195068359375,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.9363408088684082,
+      "probabilities": [
+        0.06365920603275299,
+        0.9363408088684082
+      ]
+    },
+    {
+      "file_name": "0019.jpg",
+      "elapsed": 27.22317886352539,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.8804097771644592,
+      "probabilities": [
+        0.11959023028612137,
+        0.8804097771644592
+      ]
+    },
+    {
+      "file_name": "0020.jpg",
+      "elapsed": 28.920566082000732,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.8953402042388916,
+      "probabilities": [
+        0.8953402042388916,
+        0.10465977340936661
+      ]
+    },
+    {
+      "file_name": "0021.jpg",
+      "elapsed": 30.09141993522644,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9329010248184204,
+      "probabilities": [
+        0.9329010248184204,
+        0.06709892302751541
+      ]
+    },
+    {
+      "file_name": "0022.jpg",
+      "elapsed": 31.443296670913696,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.961391270160675,
+      "probabilities": [
+        0.961391270160675,
+        0.03860873728990555
+      ]
+    },
+    {
+      "file_name": "0023.jpg",
+      "elapsed": 32.80854845046997,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9828476905822754,
+      "probabilities": [
+        0.9828476905822754,
+        0.0171523354947567
+      ]
+    },
+    {
+      "file_name": "0024.jpg",
+      "elapsed": 34.31668162345886,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.9939562678337097,
+      "probabilities": [
+        0.00604373961687088,
+        0.9939562678337097
+      ]
+    },
+    {
+      "file_name": "0025.jpg",
+      "elapsed": 36.00458550453186,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.999711811542511,
+      "probabilities": [
+        0.00028820388251915574,
+        0.999711811542511
+      ]
+    },
+    {
+      "file_name": "0026.jpg",
+      "elapsed": 37.84028697013855,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.9985533356666565,
+      "probabilities": [
+        0.001446673646569252,
+        0.9985533356666565
+      ]
+    },
+    {
+      "file_name": "0027.jpg",
+      "elapsed": 39.53130102157593,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.960273027420044,
+      "probabilities": [
+        0.03972702845931053,
+        0.960273027420044
+      ]
+    },
+    {
+      "file_name": "0028.jpg",
+      "elapsed": 41.41524600982666,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.9036831855773926,
+      "probabilities": [
+        0.09631682932376862,
+        0.9036831855773926
+      ]
+    },
+    {
+      "file_name": "0029.jpg",
+      "elapsed": 43.12365484237671,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9294671416282654,
+      "probabilities": [
+        0.9294671416282654,
+        0.07053283601999283
+      ]
+    },
+    {
+      "file_name": "0030.jpg",
+      "elapsed": 44.499542236328125,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9704405069351196,
+      "probabilities": [
+        0.9704405069351196,
+        0.02955949306488037
+      ]
+    },
+    {
+      "file_name": "0031.jpg",
+      "elapsed": 45.8678503036499,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9867448210716248,
+      "probabilities": [
+        0.9867448210716248,
+        0.013255132362246513
+      ]
+    },
+    {
+      "file_name": "0032.jpg",
+      "elapsed": 47.19075846672058,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9760786294937134,
+      "probabilities": [
+        0.9760786294937134,
+        0.023921329528093338
+      ]
+    },
+    {
+      "file_name": "0033.jpg",
+      "elapsed": 48.51227307319641,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.7215586304664612,
+      "probabilities": [
+        0.2784413993358612,
+        0.7215586304664612
+      ]
+    },
+    {
+      "file_name": "0034.jpg",
+      "elapsed": 50.195178508758545,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.8661057353019714,
+      "probabilities": [
+        0.8661057353019714,
+        0.13389430940151215
+      ]
+    },
+    {
+      "file_name": "0035.jpg",
+      "elapsed": 51.53489851951599,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9751689434051514,
+      "probabilities": [
+        0.9751689434051514,
+        0.024831093847751617
+      ]
+    },
+    {
+      "file_name": "0036.jpg",
+      "elapsed": 53.0614378452301,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9230009913444519,
+      "probabilities": [
+        0.9230009913444519,
+        0.07699902355670929
+      ]
+    },
+    {
+      "file_name": "0037.jpg",
+      "elapsed": 54.42691373825073,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.8695970773696899,
+      "probabilities": [
+        0.8695970773696899,
+        0.13040293753147125
+      ]
+    },
+    {
+      "file_name": "0038.jpg",
+      "elapsed": 55.78323578834534,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.8794755339622498,
+      "probabilities": [
+        0.8794755339622498,
+        0.12052452564239502
+      ]
+    },
+    {
+      "file_name": "0039.jpg",
+      "elapsed": 57.12070274353027,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.9568406939506531,
+      "probabilities": [
+        0.9568406939506531,
+        0.043159302324056625
+      ]
+    },
+    {
+      "file_name": "0040.jpg",
+      "elapsed": 58.45603370666504,
+      "action": "forward",
+      "raw_label": "forward",
+      "confidence": 0.989434540271759,
+      "probabilities": [
+        0.989434540271759,
+        0.010565442964434624
+      ]
+    },
+    {
+      "file_name": "0041.jpg",
+      "elapsed": 59.81279373168945,
+      "action": "turn_left",
+      "raw_label": "turn_left",
+      "confidence": 0.6870652437210083,
+      "probabilities": [
+        0.31293466687202454,
+        0.6870652437210083
+      ]
+    }
+  ]
+}
